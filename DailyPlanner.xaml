@@ -1,0 +1,62 @@
+﻿<Window x:Class="WpfAppPract2.DailyPlanner"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppPract2"
+        mc:Ignorable="d"
+        Title="DailyPlanner" Height="400" Width="750" Background="Black">
+    <Grid RenderTransformOrigin="0.556,0.461" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="49"/>
+            <RowDefinition/>
+            <RowDefinition Height="43"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1" Background="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="220"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock TextWrapping="WrapWithOverflow" Text="Name" FontSize="18" Foreground="White" Width="360"/>
+            <TextBlock Grid.Row="2" TextWrapping="WrapWithOverflow" Text="Description" FontSize="18" Foreground="White" Width="360"/>
+            <TextBox x:Name="Name" Grid.Row="1" TextWrapping="Wrap" Text=""  Width="360" Background="#FF1C1B1B" Foreground="White"/>
+            <TextBox x:Name="Description"  Grid.Row="3" TextWrapping="Wrap" Text=""  Width="360" Background="#FF1C1B1B" Foreground="White"/>
+
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1" Margin="0,2,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="Create" Grid.Column="0" Content="Create" FontSize="24" Foreground="White" Background="#FF2B2B0D" BorderBrush="Black" Click="Create_Click"/>
+            <Button x:Name="Sefe" Grid.Column="1" Content="Safe" FontSize="24" Grid.Row="5" Foreground="White" Background="#FF0C3131" BorderBrush="Black" Click="Sefe_Click"/>
+        </Grid>
+        <Button x:Name="Delete" Grid.Column="0" Content="Delete" FontSize="24" Grid.Row="2" Foreground="White"  Background="#FF310A0A" Margin="0,2,0,0" BorderBrush="Black" Click="Delete_Click"/>
+        <DatePicker x:Name="Date" Grid.Row="0" Grid.ColumnSpan="2" FontSize="24" Background="Black" Foreground="Black" DisplayDateEnd="2023-12-31" DisplayDateStart="2023-01-01" Width="360" BorderBrush="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" FirstDayOfWeek="Monday" Cursor="Hand" RenderTransformOrigin="0,0">
+            <DatePicker.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.012"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </DatePicker.RenderTransform>
+        </DatePicker>
+        <ListBox x:Name="spisok" Grid.Row="1" Foreground="White" Background="Black" FontSize="16"  Loaded="spisok_Loaded" DisplayMemberPath="Name" Cursor="Hand" SelectionChanged="spisok_SelectionChanged"/>
+
+    </Grid>
+</Window>
